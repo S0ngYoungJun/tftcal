@@ -5,5 +5,8 @@ export interface TierProbabilities {
 }
 
 export interface ChampionPool {
-  [key: number]: number;
+  [key: number]: {
+    count: number;
+    types: number;
+  };
 }

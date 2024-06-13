@@ -15,16 +15,17 @@ const tierProbabilities: TierProbabilities = {
 };
 
 const championPool: ChampionPool = {
-  1: 22,
-  2: 20,
-  3: 17,
-  4: 10,
-  5: 9,
+  1: { count: 22, types: 13 },
+  2: { count: 20, types: 13 },
+  3: { count: 17, types: 13 },
+  4: { count: 10, types: 12 },
+  5: { count: 9, types: 10 },
 };
 
 const calculateExpectedGold = (level: number, tier: number, owned: number, othersOwned: number, targetCount: number) => {
-  const remainingChamps = championPool[tier] - owned - othersOwned;
-  const probability = (tierProbabilities[level][tier] / 100) * (remainingChamps / (13 * 10)); // 13 챔피언 선택지에서 10명 배치
+  const remainingChamps = championPool[tier].count - owned - othersOwned;
+  const totalChampsInPool = championPool[tier].count * championPool[tier].types;
+  const probability = (tierProbabilities[level][tier] / 100) * (remainingChamps / totalChampsInPool); 
   const neededChamps = targetCount - owned;
 
   if (probability <= 0) {
