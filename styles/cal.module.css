@@ -1,0 +1,18 @@
+.container{
+  width:40vw;
+  height:50vh;
+}
+.box{
+  width:30vw;
+  font-size: 2rem;
+}
+.input{
+  font-size: 2rem;
+  width:10vw;
+}
+.btn{
+  width:5vw;
+  height:4vh;
+  background-color: yellow;
+  font-size: 1rem;
+}

@@ -1,6 +1,7 @@
 'use client'
 import { useState } from 'react';
 import type { TierProbabilities, ChampionPool } from '../types';
+import styles from '../styles/cal.module.css';
 
 const tierProbabilities: TierProbabilities = {
   1: { 1: 100, 2: 0, 3: 0, 4: 0, 5: 0 },
@@ -50,11 +51,12 @@ const RerollCalculator: React.FC = () => {
   };
 
   return (
-    <div>
-      <div>
+    <div className={styles.container}>
+      <div className={styles.box}>
         <label>
-          Player Level:
+          유저 레벨:
           <input
+            className={styles.input}
             type="number"
             value={level}
             onChange={(e) => setLevel(Number(e.target.value))}
@@ -63,10 +65,11 @@ const RerollCalculator: React.FC = () => {
           />
         </label>
       </div>
-      <div>
+      <div className={styles.box}>
         <label>
-          Champion Tier:
+          기물 티어:
           <input
+            className={styles.input}  
             type="number"
             value={tier}
             onChange={(e) => setTier(Number(e.target.value))}
@@ -75,10 +78,11 @@ const RerollCalculator: React.FC = () => {
           />
         </label>
       </div>
-      <div>
+      <div className={styles.box}>
         <label>
-          Owned:
+          소지 기물갯수:
           <input
+            className={styles.input}
             type="number"
             value={owned}
             onChange={(e) => setOwned(Number(e.target.value))}
@@ -86,10 +90,11 @@ const RerollCalculator: React.FC = () => {
           />
         </label>
       </div>
-      <div>
+      <div className={styles.box}>
         <label>
-          Others Owned:
+          다른 유저가 가진 기물갯수:
           <input
+            className={styles.input}
             type="number"
             value={othersOwned}
             onChange={(e) => setOthersOwned(Number(e.target.value))}
@@ -97,18 +102,19 @@ const RerollCalculator: React.FC = () => {
           />
         </label>
       </div>
-      <div>
+      <div className={styles.box}>
         <label>
-          Target Count (3 for 2-star, 9 for 3-star):
+          필요 기물 갯수:
           <input
+            className={styles.input}
             type="number"
             value={targetCount}
             onChange={(e) => setTargetCount(Number(e.target.value))}
             min="1"
           />
         </label>
-      </div>
-      <button onClick={calculate}>Calculate</button>
+      </div >
+      <button onClick={calculate} className={styles.btn}>Calculate</button>
       {expectedGold !== null && (
         <div>
           <h2>Expected Gold: {expectedGold.toFixed(2)}</h2>
